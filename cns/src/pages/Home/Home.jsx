@@ -1,7 +1,10 @@
 import React from "react";
+import Caeser from "../../cipher/Caeser";
 
 const Home = () => {
-  return <div>Home Page</div>;
+  return (
+    <Caeser />
+  );
 };
 
 export default Home;
