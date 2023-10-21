@@ -1,97 +1,4 @@
-// import React, { useEffect, useState } from 'react'
 
-// const Vigenere = () => {
-
-//     const [text, setText] = useState("");
-//     const [key, setKey] = useState("");
-//     const[origText, setOrigText] = useState("")
-//     //This map declaration should run only once
-
-//     const indexAlphabetMap = new Map();
-//     const alphabetIndexMap = new Map();
-//     let alphabetCode = 'a'.charCodeAt();
-
-//     for (let i = 0; i < 26; i++, alphabetCode++) {
-//       indexAlphabetMap.set(i, String.fromCharCode(alphabetCode));
-//       alphabetIndexMap.set(String.fromCharCode(alphabetCode), i);
-//     }
-
-//     let getAlphabet = (index) => {
-//       return indexAlphabetMap.get(index);
-//     };
-
-//     let getIndex = (alphabet) => {
-//       return alphabetIndexMap.get(alphabet);
-//     };
-
-//     let calculateModulus26 = (a, b) => {
-//       return (a + b) % 26;
-//     };
-
-//     let incrementKeyIndex = (currentKeyLength, keyText) => {
-//       if (currentKeyLength === keyText.length - 1)
-//         return 0;
-//       return currentKeyLength + 1;
-//     };
-
-//     let getEncryptedLetter = (Letter, Key) => {
-//       if (Letter === " ") {
-//         return " ";
-//       }
-//       let LetterIndex = getIndex(Letter);
-//       let KeyIndex = getIndex(Key);
-//       let EncryptedLetterIndex = calculateModulus26(LetterIndex, KeyIndex);
-//       let EncryptedLetter = getAlphabet(EncryptedLetterIndex);
-//       return EncryptedLetter;
-//     };
-
-//     let vigenereCipher = (inputText, keyText) => {
-//       let encryptedText = "";
-//       let currentKeyLength = 0;
-
-//       for (let i = 0; i < inputText.length; i++) {
-//         let currentLetter = inputText.charAt(i);
-//         let currentKey = keyText.charAt(currentKeyLength);
-
-//         if (currentLetter === " ") {
-//           // Don't increment the key index for spaces
-//           encryptedText += " ";
-//         } else {
-//           encryptedText += getEncryptedLetter(currentLetter, currentKey);
-//           currentKeyLength = incrementKeyIndex(currentKeyLength, keyText);
-//         }
-//       }
-//     setText(encryptedText)
-//     //   return encryptedText;
-//     };
-
-//     // const result = vigenereCipher("gokul is an idiot", "mai");
-//     // console.log(result);
-
-//     useEffect(() => {
-//         if (key && text && k) {
-//           vigenereCipher(origText, key);
-//         } else {
-//           // Handle the case when the key is undefined
-//           setText("");
-//         }
-//       }, [key]);
-
-//   return (
-//     <div>
-//         <h1>Vigenere</h1>
-//         <br />
-//         <label htmlFor="key">Enter key: </label>
-//         <input type="text"placeholder='Enter key' onChange={(e) => {setKey(e.target.value) ;setOrigText(e.target.value)}} />
-//         <label htmlFor="plainText">Plain Text: </label>
-//     <input type="text" name="plainText" placeholder="Enter the text" onChange={(e) => vigenereCipher(e.target.value,key)}/>
-//     <label htmlFor="cipherText">Cipher Text</label>
-//     <input type="text" name='cipherText' placeholder='Cipher Text' value={text} />
-//     </div>
-//   )
-// }
-
-// export default Vigenere
 import React, { useEffect, useState } from "react";
 
 const Vigenere = () => {
@@ -201,41 +108,55 @@ const Vigenere = () => {
   };
 
   return (
-    <div>
-      <h1>Vigenere</h1>
-      <div className="state">
-        <button onClick={handleEnrypt}>Encrypt</button>
-        <button onClick={handleDecrypt}>Decrypt</button>
+    <div className="vigenere">
+      <h1 className="heading">Vigenere</h1>
+      <div className="card">
+      <div className="caeserChoose">
+        <button className={`caeserButton ${state === 0 ? "active" : ""}`} onClick={handleEnrypt}>Encrypt</button>
+        <button className={`caeserButton ${state === 1 ? "active" : ""}`} onClick={handleDecrypt}>Decrypt</button>
       </div>
       {/* <br /> */}
-      <label htmlFor="key">Enter key: </label>
+     <div className="vigenereKey">
+     <label htmlFor="key">Enter key: </label>
       <input
         type="text"
         placeholder="Enter key"
         onChange={(e) => setKey(e.target.value)}
       />
+     </div>
       {state == 0 ? (
-        <div>
+        <div className="caeserInput">
+          <div className="caeserLeft">
           <label htmlFor="plainText">Plain Text: </label>
-          <input
+
+          <textarea
+            className="input"
             type="text"
             name="plainText"
             placeholder="Enter the text"
             onChange={(e) => setOrigText(e.target.value)}
           />
+          </div>
+
+          <div className="caeserLeft">
+            
           <label htmlFor="cipherText">Cipher Text</label>
-          <input
+          <textarea
+          className="input"
             type="text"
             name="cipherText"
             placeholder="Cipher Text"
             value={text}
           />
-          <br />
+          </div>
+    
         </div>
       ) : (
-        <div>
-          <label htmlFor="cipherText">Cipher Text: </label>
-          <input
+        <div className="caeserInput">
+         <div className="caeserLeft">
+         <label htmlFor="cipherText">Cipher Text: </label>
+          <textarea
+          className="input"
             type="text"
             name="cipherText"
             placeholder="Enter the cipher text"
@@ -245,15 +166,21 @@ const Vigenere = () => {
               setOrigText(vigenereCipher(e.target.value, key, false));
             }}
           />
-          <label htmlFor="plainText">Plain Text</label>
-          <input
+         </div>
+         <div className="caeserLeft">
+         <label htmlFor="plainText">Plain Text</label>
+          <textarea
+          className="input"
             type="text"
             name="plainText"
             placeholder="plain Text"
             value={origText}
           />
+         </div>
         </div>
       )}
+      </div>
+      
     </div>
   );
 };

@@ -1,0 +1,206 @@
+.choose {
+    background-color: black;
+}
+
+body{
+    background-color: rgb(40, 38, 38);
+}
+
+.heading{
+    color: white;
+    text-align: center;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.menuButton{
+    height: 40px;
+    width: 200px;
+    border-radius: 6px;
+    background-color: rgb(0, 128, 255);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.menuButton:hover{
+    opacity: 0.8;
+}
+
+
+
+.caeser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caeserEncrypt, .caeserDecrypt{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.caeserShift{
+    margin-top: 10px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caeserChoose{
+    display: flex;
+    gap: 10px;
+}
+
+.caeserButton{
+    height: 30px;
+    width: 100px;
+    border-radius: 6px;
+    background-color: rgb(24, 63, 101);
+    color: white;
+    font-weight: bold;
+    border: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.caeserButton:hover{
+    opacity: 0.8;
+}
+
+
+
+
+.shiftText{
+    margin-bottom: 0;
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+.vigenere{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.keyless{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keylessEncrypt , .keylessDecrypt{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    background-color: rgb(15, 25, 35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 10px;
+    color: white;
+}
+
+
+.input{
+    height: 150px;
+    width: 300px;
+    padding: 10px;
+}
+
+.caeserInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.caeserLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shiftButton{
+    border-radius: 3px;
+    background-color: rgb(24, 63, 101);
+    color: white;
+    font-weight: bold;
+    border: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 10px;
+}
+
+
+.vigenereKey{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+input{
+    outline:none;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+input:focus{
+    border-bottom: 2px solid rgb(0, 145, 255);
+}
+
+textarea{
+    outline: none;
+    border-radius: 5px;
+}
+
+textarea:focus{
+    border-bottom: 2px solid rgb(0, 145, 255);
+
+}
+
+
+.menuButton.active {
+    background-color: #20204b; 
+    pointer-events: none;
+    color: #fff; 
+  }
+
+  .caeserButton.active{
+    background-color: #20204b; 
+    pointer-events: none;
+  }
+  

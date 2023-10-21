@@ -7,6 +7,7 @@ const Caeser = () => {
   const [state, setState] = useState(0);
 
   const flag = 1;
+
   const encrypt = (str) => {
     var solved = "";
     const num = count % 26;
@@ -33,7 +34,6 @@ const Caeser = () => {
       setTemp(str);
     }
     setTemp(str);
-    console.log(temp)
     setText(solved);
   };
 
@@ -64,7 +64,6 @@ const Caeser = () => {
       setTemp(str);
     }
     setTemp(str);
-    // console.log(solved);
     setText(solved);
   };
 
@@ -84,13 +83,11 @@ const Caeser = () => {
 
   if(state == 0){
     useEffect(() => {
-        // console.log(temp)
         encrypt(temp)
       }, [count, temp]);
     
   }
   if(state == 1){
-    // setText(text)
   useEffect(() => {
     decrypt(temp);
   }, [count, temp]);
@@ -120,7 +117,12 @@ const Caeser = () => {
     }
   };
 
-  //   console.log(decrypt("abcd"))
+
+
+  useEffect(() => {
+    setText('')
+    setTemp('')
+  },[state])
 
   const handleEncryptClick = () => {
     setState(0)
@@ -130,70 +132,94 @@ const Caeser = () => {
     setState(1)
   }
 
-  console.log(text)
+
 
   return (
-    <div>
-      <h1>Caeser cipher</h1>
-      <div className="choose">
-            <button onClick={handleEncryptClick}>Encrypt</button>
-            <button onClick={handleDecryptClick}>Decrypt</button>
+    <div className="caeser">
+      <h1 className="heading">Caeser cipher</h1>
+      <div className="card">
+      <div className="caeserChoose">
+            <button  className={`caeserButton ${state === 0 ? "active" : ""}`} onClick={handleEncryptClick}>Encrypt</button>
+            <button className={`caeserButton ${state === 1 ? "active" : ""}`} onClick={handleDecryptClick}>Decrypt</button>
       </div>
       {state == 0 ?  
-        (<div className="encrypt">
-        <div>
+        (<div className="caeserEncrypt">
+          <p className="shiftText">SHIFT</p>
+        <div className="caeserShift">
           {count == 0 ? (
-            <button disabled="true">-</button>
+            <button className="shiftButton" disabled="true">-</button>
           ) : (
-            <button onClick={handleMinus}>-</button>
+            <button className="shiftButton" onClick={handleMinus}>-</button>
           )}
-          <input type="text" name="" id="" value={count} onChange={handleEncrypt}/>
-          <button onClick={handlePlus}>+</button>
+          <input type="text" name="shift" id="" value={count} onChange={handleEncrypt}/>
+          <button className="shiftButton" onClick={handlePlus}>+</button>
         </div>
+       <div className="caeserInput">
+        <div className="caeserLeft">
         <label htmlFor="plainText">Plain Text: </label>
-        <input
+       <textarea
+       value={temp}
+       className="input"
           type="text"
           name="plainText"
           placeholder="Enter the text"
           onChange={(e) => encrypt(e.target.value)}
         />
+        </div>
+        <div className="caeserLeft"> 
         <label htmlFor="cipherText">Cipher Text</label>
-        <input
+        <textarea
+        className="input"
           type="text"
           name="cipherText"
           placeholder="Cipher Text"
           value={text}
         />
+        </div>
+       </div>
       </div>)
 
       : 
-      (<div className="decrypt">
-      <div>
+      (<div className="caeserDecrypt">
+        <p className="shiftText">SHIFT</p>
+      <div className="caeserShift">
         {count == 0 ? (
-          <button disabled="true">-</button>
+          <button className="shiftButton"  disabled="true">-</button>
         ) : (
-          <button onClick={handleMinus}>-</button>
+          <button className="shiftButton" onClick={handleMinus}>-</button>
         )}
         <input type="text" name="" id="" value={count} onChange={handleDecrypt}/>
-        <button onClick={handlePlus}>+</button>
+        <button className="shiftButton" onClick={handlePlus}>+</button>
       </div>
+      <div className="caeserInput">
+
+      <div className="caeserLeft">
       <label htmlFor="cipherText">Cipher Text: </label>
-      <input
+      <textarea
+      value={temp}
+      className="input"
         type="text"
         name="cipherText"
         placeholder="Enter the cipher text"
         onChange={(e) => decrypt(e.target.value)}
       />
+      </div>
+      <div className="caeserLeft">
+
       <label htmlFor="plainText">Plain Text</label>
-      <input
+      <textarea
+      className="input"
         type="text"
         name="plainText"
         placeholder="plain Text"
         value={text}
       />
+      </div>
+      </div>
     </div>
 )
       }
+      </div>
       
         
     </div>
