@@ -112,8 +112,26 @@ const Keyless = () => {
         setRes("")
       },[option])
 
+
+      const handleMinus = () => {
+        if (col > 1) {
+          setCol(col - 1);
+        } else {
+          setCol(1);
+        }
+      };
     
-    console.log(res)
+      const handlePlus = () => {
+        setCol(col + 1);
+      };
+    
+    
+
+      const handleCount = (e) => {
+        setCol(e)
+      }
+
+
   return (
     <div className='keyless'>
         <h1 className='heading'>Keyless transposition cipher</h1>
@@ -125,7 +143,16 @@ const Keyless = () => {
       <div className="vigenereKey">
             <label htmlFor="numCols">Number of Columns: </label>
 
-            <input type="number" min={1} name='numCols'  placeholder='Enter no of columns' onChange={(e) => setCol(e.target.value)}/>
+            {/* <input type="number" min={1} name='numCols'  placeholder='Enter no of columns' onChange={(e) => setCol(e.target.value)}/> */}
+            <div className="caeserShift">
+          {col == 0 ? (
+            <button className="shiftButton" disabled="true">-</button>
+          ) : (
+            <button className="shiftButton" onClick={handleMinus}>-</button>
+          )}
+          <input type="text" name="numCols" id=""  value={col} onChange={(e) => handleCount(e.target.value)}/>
+          <button className="shiftButton" onClick={handlePlus}>+</button>
+        </div>
       </div>
         <div className='caeserInput'>
             

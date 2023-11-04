@@ -82,7 +82,7 @@ const Vigenere = () => {
   };
 
   useEffect(() => {
-    if (key && origText) {
+    if (key.length > 2 && origText) {
       const encryptedText = vigenereCipher(origText, key, true);
       setText(encryptedText);
     } else {
@@ -91,7 +91,7 @@ const Vigenere = () => {
   }, [key, origText]);
 
   useEffect(() => {
-    if (key && text) {
+    if (key.length > 2 && text) {
       const decryptedText = vigenereCipher(text, key, false);
       setOrigText(decryptedText); // Update the state with the decrypted text
     } else {
